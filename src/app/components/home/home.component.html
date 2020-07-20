@@ -1,0 +1,13 @@
+
+<h1>New Relesaes</h1>
+<div class="card-columns">
+    <div *ngFor="let album of getData">
+      <div class="card" *ngIf="album != undefined">
+          <img [src]="album.images[0].url" class="card-img-top" alt="{{ album.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ album.name }}</h5>
+            <span class="badge badge-pill badge-secondary" *ngFor="let artist of album.artists">{{ artist.name }}</span>
+          </div>
+      </div>
+    </div>
+</div>
