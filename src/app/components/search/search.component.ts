@@ -11,10 +11,10 @@ export class SearchComponent implements OnInit{
 
     private resultA: Object;
     private loading = false;
+    private error = false;
 
     constructor(
         private spotifyService: SpotifyService,
-        private router: Router
     ){}
 
     ngOnInit(){}
@@ -26,6 +26,9 @@ export class SearchComponent implements OnInit{
                             .subscribe(res => {
                                 this.resultA = res;
                                 this.loading = false;
+                            }, err => {
+                                this.error = true;
+                                this.loading = false;
                             })
         }
     }
@@ -36,5 +39,9 @@ export class SearchComponent implements OnInit{
 
     public get getLoading():boolean{
         return this.loading;
+    }
+
+    public get getError():boolean{
+        return this.error;
     }
 }

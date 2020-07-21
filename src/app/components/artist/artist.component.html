@@ -14,5 +14,23 @@
             <button class="btn btn-outline-danger" [routerLink]="['/search']">Back</button>
         </div>
         <hr>
+        <table class="table mt-5">
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Album</th>
+                <th>Rankin</th>
+                <th>Previw</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let track of getTracks; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ track['name'] }}</td>
+                    <td>{{ track['album']['name'] }}</td>
+                    <td>{{ track['popularity'] }}</td>
+                    <td><iframe [src]="track['id'] | url " width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

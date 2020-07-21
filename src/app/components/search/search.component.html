@@ -4,6 +4,7 @@
     </div>
 </div>
 
+<app-error *ngIf="getError"></app-error>
 <app-loading *ngIf="getLoading"></app-loading>
 <div class="card-columns mt-5" *ngIf="getResults != undefined && term.value.length != 0">
     <app-card [data]="result" [type]="'genres'" *ngFor="let result of getResults"></app-card>

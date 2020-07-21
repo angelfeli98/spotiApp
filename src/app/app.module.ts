@@ -15,10 +15,13 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CardComponent } from './components/card/card.component';
 import { LoadingComponent } from './components/loading/loadind.component';
+import { NotFoundComponent } from './components/404/404.component';
+import { ErrorComponent } from './components/error/error.component';
 
 // Pipes
 import { NoImagePipe } from './Pipes/noImage.pipe';
 import { FilterList } from './Pipes/filterList.pipe';
+import { UrlPipe } from './Pipes/url.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +32,11 @@ import { FilterList } from './Pipes/filterList.pipe';
     FooterComponent,
     CardComponent,
     LoadingComponent,
+    NotFoundComponent,
+    ErrorComponent,
     NoImagePipe,
-    FilterList
+    FilterList,
+    UrlPipe
   ],
   imports: [
     BrowserModule,

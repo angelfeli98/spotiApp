@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit{
 
     private data: Object;
     private loading = true;
+    private error = false;
 
     constructor(
         private spotifyService: SpotifyService,
@@ -20,6 +21,11 @@ export class HomeComponent implements OnInit{
             .subscribe(data => {
                 this.data = data;
                 this.loading = false;
+            }, err => {
+                if(err){
+                    this.loading = false;
+                    this.error = true;
+                }
             });
     }
 
@@ -33,5 +39,9 @@ export class HomeComponent implements OnInit{
 
     public get getLoading(): boolean{
         return this.loading;
+    }
+
+    public get getErro(): boolean{
+        return this.error;
     }
 }

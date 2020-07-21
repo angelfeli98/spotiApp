@@ -16,15 +16,23 @@ export class SpotifyService{
     constructor(
         private httpClient: HttpClient
     ){
-        this.token = 'BQAexpi25wiaJVr5ljFLDd6CSSNKvtHByjduuubkVR28t7O88Is86i2WY7-ZnUgKXtghnTQ6aTuHej6SnWQ';
+        this.token = 'BQCF-2c9lnxdNpqGBJk9483_lnZ0SFAsbJkyrc4TRGRmRqql151nxv84rdf0UXJV4-EnSw21pd73TyEO4nc';
         this.headers = new HttpHeaders({
             'Authorization': `Bearer ${this.token}`
         });
         this.url = 'https://api.spotify.com/v1/';
     }
 
-    private refreshToken = ():void => {
-
+    public refreshToken = ():void => {
+        const body = JSON.stringify({
+            grant_type: 'client_credentials',
+            client_id:  '92f99dd74fad49659ec951f6d37ff241',
+            client_secret: '8dfd8a60eba44f4c9d795dda534c83ef'
+        });
+        const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
+        this.httpClient.post('https://accounts.spotify.com/api/token',body,{ headers })
+                        .pipe( map(data => data['access_token']))
+                        .subscribe(token => this.token = token, (err) => console.log(err))
     }
 
     public getQuery = (query: string, field ?: string):any => {
