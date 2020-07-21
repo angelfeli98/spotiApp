@@ -1,0 +1,18 @@
+
+<app-loading *ngIf="getLoading"></app-loading>
+
+<div *ngIf="!!!getLoading">
+    <div class="row animated fadeIn">
+        <div class="col-2">
+            <img [src]=" getArtist['images'] | noImage " class="img-thumbnail img-circle" alt="Responsive image">
+        </div>
+        <div class="col">
+            <h3>{{ getArtist['name'] }}</h3>
+            <p><a target="_blank" href="{{getArtist['external_urls']['spotify']}}">Spotify page</a></p>
+        </div>
+        <div class="col-4 text-right">
+            <button class="btn btn-outline-danger" [routerLink]="['/search']">Back</button>
+        </div>
+        <hr>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+
+<div class="card puntero" *ngIf="getData != undefined" (click)="navigateToItem()">
+    <img [src]="getData.images | noImage" class="card-img-top" alt="{{ getData.name }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ getData.name }}</h5>
+      <span class="badge badge-pill badge-secondary" *ngFor="let item of getData[getTitle]">{{ item | filterList:getTitle }}</span>
+    </div>
+</div>

@@ -4,17 +4,9 @@
     </div>
 </div>
 
-
-<div class="card-columns mt-5" *ngIf="getResults != undefined">
-    <div *ngFor="let result of getResults">
-        <div class="card" *ngIf="result != undefined">
-            <img [src]="result.images[0].url" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{ result.name }}</h5>
-              <span class="badge badge-pill badge-secondary" *ngFor="let genre of result.genres">{{ genre }}</span>
-            </div>
-        </div>
-    </div>
+<app-loading *ngIf="getLoading"></app-loading>
+<div class="card-columns mt-5" *ngIf="getResults != undefined && term.value.length != 0">
+    <app-card [data]="result" [type]="'genres'" *ngFor="let result of getResults"></app-card>
 </div>
 
 
