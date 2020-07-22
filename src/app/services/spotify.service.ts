@@ -23,17 +23,6 @@ export class SpotifyService{
         this.url = 'https://api.spotify.com/v1/';
     }
 
-    public refreshToken = ():void => {
-        const body = JSON.stringify({
-            grant_type: 'client_credentials',
-            client_id:  '92f99dd74fad49659ec951f6d37ff241',
-            client_secret: '8dfd8a60eba44f4c9d795dda534c83ef'
-        });
-        const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
-        this.httpClient.post('https://accounts.spotify.com/api/token',body,{ headers })
-                        .pipe( map(data => data['access_token']))
-                        .subscribe(token => this.token = token, (err) => console.log(err))
-    }
 
     public getQuery = (query: string, field ?: string):any => {
         return this.httpClient.get(`${this.url}${query}`, {
